@@ -1,0 +1,67 @@
+<?php echo $this->doctype(); ?>
+<html lang="<?php echo $this->params('lang')?>">
+  <head>
+    <meta charset="utf-8">
+    <?php echo $this->headTitle($this->translate('PeoplePlus Tech Recruitment'))->setSeparator(' - ')->setAutoEscape(false) ?>
+    <?php echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0') ?>    
+    <?php echo $this->headScript()
+                        ->prependFile($this->basepath('Core/js/core.init.js'))
+                        ->prependFile($this->basePath('Core/js/idle-timer.min.js'))
+                        ->prependFile($this->basePath('js/bootstrap.min.js'))
+                        ->prependFile($this->basePath('js/jquery.js')) 
+                        ->appendScript('var lang="' . $this->params('lang') . '";'
+                                     . 'var basePath="' . $this->basePath() . '";');
+    ?>    
+    <?php echo $this->headLink() ->prependStylesheet($this->basePath() . '/css/ats.css');?>
+    <?php echo $this->headStyle() ?>
+    
+    <?php //if($this->params('logout')): ?>
+        <script type="text/javascript">
+        /*$.idleTimer(60000);
+        $(document).bind("idle.idleTimer", function(){
+            window.open('','_parent','');
+            window.close();
+        });*/
+        </script>
+    <?php //endif; ?>
+  </head>
+  <body>
+	<div id="wrap">
+            <div id="main" class="clear-top">      
+                <header id="ats-topbar" role="banner">
+                    <div class="container">
+                      <nav class="navbar-nav">
+                          <span class="navbar-brand" ><a href="<?php echo $this->basepath('/' . $this->params('lang'))?>"><img src='/images/logo.png' /></a></span>
+                    </div>
+                </header>
+
+                <div class="container">
+                    <main id="content" class="col-xs-12">
+                        <?php echo $this->notifications; ?>
+                        <?php echo $this->content; ?>
+                    </main> 
+                </div>
+            </div>
+                
+        </div>    
+    <!-- /container -->
+    <footer id="ats-footer">
+        <div class="container">
+        <div class="pull-left">
+            <small>
+                &copy; 2014 <a href="http://www.peopleplustech.com">PeoplePlus Tech</a>. <?php echo $this->translate('All rights reserved.') ?>
+            </small>
+        </div>
+        <div class="pull-right">
+            <div class="btn-group" data-toggle="buttons-radio" id="language-switcher">
+                <?php $lang = $this->params('lang');
+                foreach (array('en'/*, 'de', 'fr', 'es', 'it', 'ru'*/) as $availableLang): ?>
+                <button type="button" class="btn btn-xs btn-default<?php echo $availableLang == $lang ? ' active' : ''?>" id="language-switcher-<?php echo $availableLang ?>">
+                <?php echo strtoupper($availableLang) ?></button>
+                <?php endforeach ?>
+            </div>   
+        </div>
+        </div>
+    </footer>
+    </body>
+</html>

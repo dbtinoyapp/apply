@@ -1,0 +1,15 @@
+<div class="row">
+    <div class='v-center'>
+        <div class="col-xs-6 col-xs-offset-3">
+            <p class="text-right"><a href="<?php echo $this->url('lang/intern-login') ?>"><?php echo $this->translate('Already have an account?') ?></a></p>
+            <?php
+            $this->registrationForm->setAttributes(array(
+                'action' => $this->url('lang/intern-register', array(), true),
+                'method' => 'post',
+                'id' => 'registration-form',
+            ));
+            ?>
+            <?php echo $this->form($this->registrationForm); ?>
+        </div>
+    </div>
+</div>

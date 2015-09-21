@@ -1,0 +1,99 @@
+<?php 
+    $this->formRow()->setShouldWrap(false);
+    $this->headstyle('img.user-image { max-width:150px; max-height: 250px; }'); 
+    $layout = !empty($this->layout) ? $this->layout : null;
+?>
+
+<fieldset id="<?php echo !$element->hasAttribute('id') ? $element->getAttribute('id') : 'user-info'?>">
+    <legend><?php echo $this->translate($element->getLabel())?></legend>
+    <div class="fieldset-content">
+       <div class="row">
+            <div class="col-xs-3 <?php echo !$element->get('image')->getMessages() ?: 'input-error'; ?>">
+                <?php if($element->getObject()): ?>
+                <div class="controls controls-row row">
+                    <?php if ($image = $element->getObject()->getImage()): ?>
+                    <div class="col-xs-12 text-center">
+                        <img src="<?php echo $this->basePath($image->getUri()) ?>" class="user-image img-polaroid" />
+                        <?php echo $this->formRow($element->get('imageId')->setValue($image->getId())) ?>
+                    </div>
+                  <?php endif ?>
+                </div>
+                <?php endif ?>
+                
+                
+                
+            </div>
+            <div class="col-xs-9">
+                <div class="row">
+                    <div class="col-xs-2 <?php echo !$element->get('gender')->getMessages() ?: 'input-error'; ?>">
+                        <?php echo $this->formRow($element->get('gender')); ?>
+                    </div>
+                    <div class="col-xs-4 <?php echo !$element->get('firstName')->getMessages() ?: 'input-error'; ?>">
+                        <?php echo $this->formRow($element->get('firstName')); ?>
+                    </div>
+                    <div class="col-xs-2 <?php echo !$element->get('middleName')->getMessages() ?: 'input-error'; ?>">
+                        <?php echo $this->formRow($element->get('middleName')); ?>
+                    </div>
+                    <div class="col-xs-4 <?php echo !$element->get('lastName')->getMessages() ?: 'input-error'; ?>">
+                        <?php echo $this->formRow($element->get('lastName')); ?>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-8 <?php echo !$element->get('street')->getMessages() ?: 'input-error'; ?>">
+                        <?php echo $this->formRow($element->get('street')); ?>
+                    </div>
+                    <div class="col-xs-4 <?php echo !$element->get('houseNumber')->getMessages() ?: 'input-error'; ?>">
+                        <?php echo $this->formRow($element->get('houseNumber')); ?>
+                    </div> 
+                </div>
+                <div class="row">
+                    <div class="col-xs-8 <?php echo !$element->get('city')->getMessages() ?: 'input-error'; ?>">
+                        <?php echo $this->formRow($element->get('city')); ?>
+                    </div>
+                    <div class="col-xs-4 <?php echo !$element->get('postalcode')->getMessages() ?: 'input-error'; ?>">
+                        <?php echo $this->formRow($element->get('postalcode')); ?>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-xs-6 <?php echo !$element->get('phone')->getMessages() ?: 'input-error'; ?>">
+                        <?php echo $this->formRow($element->get('phone')); ?>
+                    </div>
+                    <div class="col-xs-6 <?php echo !$element->get('email')->getMessages() ?: 'input-error'; ?>">
+                        <?php echo $this->formRow($element->get('email')); ?>
+                    </div>   
+                </div>
+                <div class="row">
+                    <div class="col-xs-2 <?php echo !$element->get('civilStatus')->getMessages() ?: 'input-error'; ?>">
+                        <?php echo $this->formRow($element->get('civilStatus')); ?>
+                    </div>
+                    <div class="col-xs-4 <?php echo !$element->get('citizenship')->getMessages() ?: 'input-error'; ?>">
+                        <?php echo $this->formRow($element->get('citizenship')); ?>
+                    </div>
+                    <div class="col-xs-5 <?php echo !$element->get('dob')->getMessages() ?: 'input-error'; ?>">
+                        <label style="margin-bottom: 0">Date of Birth</label>
+                        <br />
+                        <?php echo $this->formRow($element->get('dob')); ?>
+                    </div>
+                    
+                    <div class="col-xs-1 col-xs-pull-1 <?php echo !$element->get('age')->getMessages() ?: 'input-error'; ?>">
+                        <?php echo $this->formRow($element->get('age')); ?>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6 <?php echo !$element->get('tin')->getMessages() ?: 'input-error'; ?>">
+                        <?php echo $this->formRow($element->get('tin')); ?>
+                    </div>
+                    <div class="col-xs-6 <?php echo !$element->get('sss')->getMessages() ?: 'input-error'; ?>">
+                        <?php echo $this->formRow($element->get('sss')); ?>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+       
+    </div>
+    
+</fieldset>
+<?php 
+    $this->formRow()->setShouldWrap(true);

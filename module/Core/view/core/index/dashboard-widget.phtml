@@ -1,0 +1,17 @@
+<div class="col-xs-12">
+<?php 
+
+if ($this->script): 
+        try {
+            echo $this->render($this->script);
+        } catch (\Exception $e) {
+            ?><?php echo $this->translate('Error loading widget.')?>
+            <br><br>
+            <?php echo $e->getMessage() ?>
+        <?php }
+
+elseif ($this->content): 
+    echo $this->content; 
+endif;
+?> 
+</div>

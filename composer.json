@@ -1,0 +1,27 @@
+{
+    "name": "root/public_html",
+    "authors": [
+        {
+            "name": "Dennis Tinoy",
+            "email": "dbtinoy@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "ext-mongo": "*",
+        "ext-intl": "*",
+        "zendframework/zendframework": "dev-master",
+        "doctrine/mongodb-odm": "dev-master",
+        "doctrine/doctrine-mongo-odm-module": "dev-master",
+        "hybridauth/hybridauth": "dev-master",
+	"mpdf/mpdf": "5.7.*",
+        "phpoffice/phpword": "dev-master",
+        "phpoffice/phpexcel": "dev-master",
+        "twbs/bootstrap": "3.1.*",
+        "components/jquery": "1.9.1",
+        "fortawesome/font-awesome": "*",
+        "twitter/typeahead.js": "*"
+    },
+    "require-dev": {
+    }
+}

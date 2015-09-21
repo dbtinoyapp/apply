@@ -1,0 +1,217 @@
+<!--<div class="row">
+    <div class="col-xs-12">
+        <div class="col-xs-8">
+            <h2><small><?php echo $this->translate('Title') ?>: </small> <?php echo trim($this->cv->title) ? nl2br($this->cv->title) : '-'; ?></h2>
+        </div>
+    </div>
+</div>-->
+
+<div class="row">
+<?php if (count($this->cv->educations) > 0): ?>
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading"><?php echo $this->translate('Education') ?></div>         
+            <table class="table"> 
+                <thead>
+                    <th class="col-xs-3"><?php echo $this->translate('Organization') ?></th>
+                    <th class="col-xs-2"><?php echo $this->translate('Start') ?></th>
+                    <th class="col-xs-2"><?php echo $this->translate('End') ?></th>  
+                     <th class="col-xs-1"><?php echo $this->translate('Ongoing?') ?></th>
+                     <th  class="col-xs-4"><?php echo $this->translate('Degree') ?></th>
+                </thead>
+                <tbody>
+                    <?php foreach ($this->cv->educations as $education): ?>
+                        <tr>
+                            <td><?php echo $education->organizationName ?></td>
+                            <td><?php echo $education->startDate ?></td>
+                            <td><?php echo $education->endDate ?></td>                            
+                            <td><?php echo $education->currentIndicator ?></td>    
+                            <td><?php echo $education->competencyName ?></td>
+                        </tr>
+                    <?php endforeach; ?>    
+                </tbody>
+            </table>
+        </div>
+    </div>
+<?php endif; ?> 
+</div>
+
+<div class="row">
+<?php if (count($this->cv->employments) > 0): ?>
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading"><?php echo $this->translate('Work Experience') ?></div>           
+            <table class="table">
+                <thead>
+                    <th class="col-xs-3"><?php echo $this->translate('Company') ?></th>
+                    <th class="col-xs-2"><?php echo $this->translate('Start') ?></th>
+                    <th class="col-xs-2"><?php echo $this->translate('End') ?></th>
+                     <th class="col-xs-1"><?php echo $this->translate('Ongoing?') ?></th> 
+                    <th  class="col-xs-4"><?php echo $this->translate('Description') ?></th>
+                </thead>
+                <tbody>
+                    <?php foreach ($this->cv->employments as $employment): ?>
+                        <tr>
+                            <td><?php echo $employment->organizationName ?></td>
+                            <td><?php echo $employment->startDate ?></td>
+                            <td><?php echo $employment->endDate ?></td>
+                            <td><?php echo $employment->currentIndicator ?></td>
+                            <td><?php echo $employment->description ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+<?php endif; ?> 
+</div>
+
+<div class="row">
+<?php if (count($this->cv->trainings) > 0): ?>
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading"><?php echo $this->translate('Trainings & Seminars') ?></div>         
+            <table class="table"> 
+                <thead>
+                    <th class="col-xs-8"><?php echo $this->translate('Organization') ?></th>
+                    <th class="col-xs-2"><?php echo $this->translate('Start') ?></th>
+                    <th class="col-xs-2"><?php echo $this->translate('End') ?></th>                    
+                </thead>
+                <tbody>
+                    <?php foreach ($this->cv->trainings as $training): ?>
+                        <tr>
+                            <td><?php echo $training->organizationName ?></td>
+                            <td><?php echo $training->startDate ?></td>
+                            <td><?php echo $training->endDate ?></td>                            
+                        </tr>
+                    <?php endforeach; ?>    
+                </tbody>
+            </table>
+        </div>
+    </div>
+<?php endif; ?> 
+</div>
+<div class="row">
+<?php if (count($this->cv->computingSkills) > 0): ?>
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading"><?php echo $this->translate('Computing Skills') ?></div>    
+            <table class="table"> 
+                <thead>
+                    <th class="col-xs-3"><?php echo $this->translate('Skill Name') ?></th>
+                    <th class="col-xs-1"><?php echo $this->translate('Yrs Exp') ?></th>
+                    <th class="col-xs-1"><?php echo $this->translate('Competency') ?></th>
+                    <th><?php echo $this->translate('Description') ?></th>
+                </thead>
+                <tbody>
+                <?php foreach ($this->cv->computingSkills as $skill): ?>
+                    <tr>
+                        <td><?php echo $skill->skillName ?></td>
+                        <td><?php echo $skill->yrsOfExperience ?></td>
+                        <td><?php echo $skill->competency ?></td>
+                        <td><?php echo $skill->description ?></td>
+                    </tr>
+                <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+<?php endif; ?>
+</div>
+<!--<div class="row">
+<?php if (count($this->cv->complianceSkills) > 0): ?>
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading"><?php echo $this->translate('Compliance Skills') ?></div>    
+            <table class="table"> 
+                <thead>
+                    <th class="col-xs-3"><?php echo $this->translate('Skill Name') ?></th>
+                    <th class="col-xs-1"><?php echo $this->translate('Yrs Exp') ?></th>
+                    <th class="col-xs-1"><?php echo $this->translate('Competency') ?></th>
+                    <th><?php echo $this->translate('Description') ?></th>
+                </thead>
+                <tbody>
+                <?php foreach ($this->cv->complianceSkills as $skill): ?>
+                    <tr>
+                        <td><?php echo $skill->skillName ?></td>
+                        <td><?php echo $skill->yrsOfExperience ?></td>
+                        <td><?php echo $skill->competency ?></td>
+                        <td><?php echo $skill->description ?></td>
+                    </tr>
+                <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+<?php endif; ?>
+</div>-->
+<!--<div class="row">
+<?php if (count($this->cv->managementSkills) > 0): ?>
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading"><?php echo $this->translate('Management Skills') ?></div>    
+            <table class="table"> 
+                <thead>
+                    <th class="col-xs-3"><?php echo $this->translate('Skill Name') ?></th>
+                    <th class="col-xs-1"><?php echo $this->translate('Yrs Exp') ?></th>
+                    <th class="col-xs-1"><?php echo $this->translate('Competency') ?></th>
+                    <th><?php echo $this->translate('Description') ?></th>
+                </thead>
+                <tbody>
+                <?php foreach ($this->cv->managementSkills as $skill): ?>
+                    <tr>
+                        <td><?php echo $skill->skillName ?></td>
+                        <td><?php echo $skill->yrsOfExperience ?></td>
+                        <td><?php echo $skill->competency ?></td>
+                        <td><?php echo $skill->description ?></td>
+                    </tr>
+                <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+<?php endif; ?>
+</div>-->
+<div class="row">
+<?php if (count($this->cv->nativeLanguages) > 0): ?>
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading"><?php echo $this->translate('Native Language') ?></div>    
+            <table class="table">
+                <tbody>
+                <?php foreach ($this->cv->nativeLanguages as $nativeLang): ?>
+                    <tr>
+                        <td><?php echo $nativeLang->language ?></td>
+                    </tr>
+                <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+<?php endif; ?>
+</div>
+<div class="row">
+<?php if (count($this->cv->otherLanguages) > 0): ?>
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading"><?php echo $this->translate('Other Language') ?></div>    
+            <table class="table"> 
+                <thead>
+                    <th>Language Name</th>
+                    <th>Reading Level</th>
+                    <th>Spoken Level</th>
+                </thead>
+                <tbody>
+                    <?php foreach ($this->cv->otherLanguages as $otherLang): ?>
+                        <tr>
+                            <td><?php echo $otherLang->language ?></td>
+                            <td><?php echo $otherLang->levelReading ?></td>
+                            <td><?php echo $otherLang->levelSpoken ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+<?php endif; ?>
+</div>

@@ -1,0 +1,11 @@
+<?php $this->headScript()->appendFile($this->basePath('Core/js/loading-popup.js')); ?>
+<div class="modal" id="loading-popup" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="margin: 22% auto 0px; width: 170px;">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <p class="text-muted lead"><?php echo $this->translate('Loading') ?></p>
+                <i class="ppt-icon ppt-icon-spinner fa-spin"></i>
+            </div> 
+        </div>
+    </div>
+</div>

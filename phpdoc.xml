@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<phpdoc>
+    <title>PPT</title>
+    <parser>
+        <target>tmp</target>
+    </parser>
+    <transformer>
+        <target>docs</target>
+    </transformer>
+    <files>
+        <directory>module/*</directory>
+        <ignore>vendor/*</ignore>
+        <ignore>module/PptDemoSkin/*</ignore>
+        <ignore>*/language/*</ignore>
+        <ignore>*/view/*</ignore>
+        <ignore>config/*</ignore>
+        <ignore>bin/*</ignore>
+        <ignore>test/*</ignore>
+    </files>
+</phpdoc>

@@ -1,0 +1,43 @@
+<?php // if ($this->required):    ?>
+<?php // $this->headTitle($this->translate('Login required'));    ?>
+<!--<h1><?php // echo $this->translate('Please authenticate yourself to proceed')    ?></h1>-->
+<?php // else: ?>
+<?php // $this->headTitle($this->translate('Login')); ?>
+<?php // endif; ?>
+
+<div class="row">
+    <div class='v-center col-xs-12'>
+        <div class="col-xs-6" style="border-right:1px solid #cf8508">
+            <?php
+            $this->registrationForm->setAttributes(array(
+                'action' => $this->url('lang/intern-register', array(), array('query' => array_map('urlencode', $this->params()->fromQuery())), true),
+                'method' => 'post',
+                'id' => 'registration-form',
+            ));
+            ?>
+            <?php echo $this->form($this->registrationForm, Core\Form\View\Helper\Form::LAYOUT_INLINE); ?>
+        </div>
+        <div class="col-xs-6">
+            <?php
+            $this->loginForm->setAttributes(array(
+                'action' => $this->url('lang/intern-login', array(), array('query' => array_map('urlencode', $this->params()->fromQuery())), true),
+                'method' => 'post',
+                'id' => 'login-form',
+            ));
+            ?>
+            <?php echo $this->form($this->loginForm, Core\Form\View\Helper\Form::LAYOUT_VERTICAL); ?>
+
+            <div class='clearfix'></div>
+            <div class="row">    
+                <div class="col-xs-12 text-center"><h5 class="text-center text-primary">Or you can also login using ...</h5></div>
+            </div>
+            <br /><br />
+                <div class="col-xs-6">
+                    <a class="btn btn-large btn-block btn-default" title="<?php echo sprintf($this->translate('Login with %s'), 'LinkedIn') ?>" href="<?php echo $this->url('auth-provider', array('provider' => 'linkedin'), array('query' => array('ref' => urlencode('/')))) ?>"><i class="ppt-icon ppt-icon-linkedin"></i> LinkedIn</a>
+                </div>
+                <div class="col-xs-6">
+                    <a class="btn btn-large btn-block btn-default" title="<?php echo sprintf($this->translate('Login with %s'), 'Facebook') ?>" href="<?php echo $this->url('auth-provider', array('provider' => 'facebook'), array('query' => array('ref' => urlencode('/')))) ?>"><i class="ppt-icon ppt-icon-facebook"></i> Facebook</a>
+                </div>
+        </div>
+    </div>
+</div>

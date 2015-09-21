@@ -1,0 +1,17 @@
+<?php $layout = !empty($this->layout) ? $this->layout : null; ?>
+
+<fieldset id="<?php echo $element->hasAttribute('id') ? $element->getAttribute('id') : 'cv-computingSkills'?>">
+    <legend><?php echo $this->translate($element->getLabel())?><a class="add-item ats-form-add" href="#"><i class="ppt-icon ppt-icon-plus"></i></a></legend>
+    <div class="fieldset-content">
+       <div class="row">
+            <div class="col-xs-12">
+                <?php echo $this->formRow($element->get('skillName')); ?>
+                <?php echo $this->formRowCombined(
+                    array(4 => $element->get('yrsOfExperience'), 5 => $element->get('competency')), null, null, $layout
+                );?>                
+                <?php echo $this->formRow($element->get('description')); ?>
+                      
+            </div>
+        </div>
+    </div>
+</fieldset>

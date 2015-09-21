@@ -1,0 +1,10 @@
+<?php $this->formRow()->setShouldWrap(false);?>
+<nav class="navbar">   
+    <div class="col-xs-12 text-right">
+        <?php $first=true; foreach($this->element as $button):?>
+            <?php $button->setAttribute('class', $button->getAttribute('class'));?>
+            <?php echo $this->formRow($button);?>
+        <?php endforeach;?>    
+    </div>
+</nav>
+

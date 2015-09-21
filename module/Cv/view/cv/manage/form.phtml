@@ -1,0 +1,33 @@
+<?php
+$this->headtitle($this->id ? $this->translate('Edit resume') : $this->translate('Create resume'));
+$this->headscript()
+        ->appendFile($this->basepath('Core/js/select2.min.js'))
+        ->appendFile($this->basepath('Core/js/sisyphus.js'))
+        ->appendFile($this->basepath('Core/js/jquery.formcollection.js'))
+        ->appendFile($this->basepath('Core/js/core.autosave.js'));
+$this->headLink()->appendStylesheet($this->basePath() . '/css/ats.css');
+$this->headLink()->appendStylesheet($this->basePath() . '/css/ats.css');
+$this->headLink()->appendStylesheet($this->basePath() . '/css/select2.css');
+$this->headLink()->appendStylesheet($this->basePath() . '/css/select2-bootstrap.css');
+
+//$this->headscript()->appendScript('$(function(){$(".form-collection").formcollection();});');
+$layout = !empty($this->layout) ? $this->layout : null;
+$this->form->setAttribute('action', $this->url('lang/cvs/' . $this->action, array('id' => $this->id), true));
+?>
+<h1><?php echo $this->translate($this->action == 'new' ? 'Create a new resume' : 'Edit Resume') ?></h1>
+<div class="row form-status-container text-right muted" style="height:25px;">
+    <em class="draft-on-save form-status" style="display:none"> Draft last saved (<span></span>) </em>
+    <em class="draft-on-restore form-status text-warning" style="display:none"> Form has been loaded from draft </em>
+    <em class="draft-on-release form-status" style="display:none"> Releasing form draft... </em>
+  </div>
+<?php
+$this->formdateselect()->setLocale($this->params('lang'));
+
+//    if ($this->action == 'new'): 
+//        $form->get('cv')->get('educations')->setCount(1)->prepareFieldset();
+//        $form->get('cv')->get('trainings')->setCount(1)->prepareFieldset();
+//        $form->get('cv')->get('employments')->setCount(1)->prepareFieldset();
+//    endif;
+
+echo $this->form($this->form, Core\Form\View\Helper\Form::LAYOUT_HORIZONTAL);
+

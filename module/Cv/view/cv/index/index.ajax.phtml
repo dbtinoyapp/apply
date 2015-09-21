@@ -1,0 +1,53 @@
+<?php if (!$this->isAjaxRequest): ?>
+<div class="panel panel-default pagination-container">
+<?php endif ?>
+<div class="panel-heading">
+<?php echo $this->translate('List of resumes')?>
+</div>
+
+<table class="table table-striped table-hover" id="cv-list">
+<thead>
+    <th><?php echo $this->translate('Details')?></th>
+    <th class="col-xs-3"><?php echo $this->translate('Education')?></th>
+    <th class="col-xs-1"><?php echo $this->translate('Action')?></th>
+</thead>
+
+<tbody>
+<?php foreach ($resumes as $resume):?>
+<tr>
+  <?php if($resume): ?>
+    <td>
+        <div class="pull-left">
+            <h2 class="table-data-title"><?php echo $resume->title ?></h2>
+            <h3><?php echo $resume->positionApplied->title ?></h3>
+            <i class="fa-certificate fa"></i> <?php echo $resume->user->info->profession ? $resume->user->info->profession : '<em class="muted">-</em>'?> | 
+            <i class="ppt-icon-envelope fa"></i> <?php echo $resume->user->info->email ? $resume->user->info->email : '<em class="muted">-</em>' ?> | 
+            <i class="ppt-icon-phone fa"></i> <?php echo $resume->user->info->phone ? $resume->user->info->phone : '<em class="muted">-</em>' ?> |     
+            <i class="fa fa-home"></i> <?php echo $resume->user->info->city ? $resume->user->info->city : '<em class="muted">-</em>' ?><br />
+        </div>
+    </td>
+    <td><?php if (count($resume->educations)>0):?>
+      <?php echo $this->translate('Education').': '.$this->period($resume->educations).' '.$this->translate('years')?><br/>
+    <?php endif;?>
+    <?php if (count($resume->employments)>0):?>
+      <?php echo $this->translate('Work Experience').': '.$this->period($resume->employments).' '.$this->translate('years')?><br/>
+    <?php endif;?>
+    </td>
+    <td>
+        <div class="btn-group">
+            <a href="<?php echo $this->url('lang/cvs/detail-full', array('id' => $resume->id), true)?>" class="btn btn-xs btn-default pull-right" title="<?php echo $this->translate('edit')?>"><span class="fa fa-eye"></span></a>
+        </div>
+    </td>
+  <?php endif ?>
+</tr>
+<?php endforeach?>
+</tbody>
+
+</table>
+<div class="ats-panel-foot">
+<?php echo $this->paginationControl($resumes, 'Sliding', 'pagination-control', array('lang' => $this->params('lang'), 'route' => 'lang/cvs'));?>
+</div>
+</div>
+<?php if (!$this->isAjaxRequest): ?>
+</div>
+<?php endif ?>

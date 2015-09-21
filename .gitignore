@@ -1,0 +1,7 @@
+vendor/**
+cache/**
+log/**
+less/**
+build/**
+bin/**
+phdoc.*

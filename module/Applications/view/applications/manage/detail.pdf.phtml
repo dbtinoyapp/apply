@@ -1,0 +1,131 @@
+<?php $this->headTitle($this->translate('Details')); ?>
+<style>
+    body {
+        font-family: Arial;
+    }
+    .header {
+        text-align: right; 
+        border-bottom: 1px solid #000000; 
+        font-size: 10pt;
+    }
+    .footer {
+        vertical-align: bottom; 
+        font-size: 8pt;
+        color: #000000; 
+    }
+    .address,
+    .personal-information {
+        vertical-align: top;
+        width: 100%;
+        border-spacing: 0px;
+    }
+    table.list {
+        width: 100%;
+        border: 1px solid #e4e4e4;
+        border-spacing: 0px;
+    }
+    table.list tbody tr td {
+        vertical-align: top;
+        border-bottom: 1px solid #f4f4f4;
+        padding: 3px;
+    }
+    th {
+        background-color: #f4f4f4;
+    }
+    .full-name {
+    }
+    .comp-title {
+        font-style: italic;
+    }
+    .header-primary {
+        font-family: "Georgia";
+    }
+    .heading {
+        border: 2px solid black;
+    }
+</style>
+<sethtmlpageheader name="header" value="on" show-this-page="1"/>
+<htmlpagefooter name="footer">
+    <table width="100%" class="footer">
+        <tbody>
+            <tr>
+                <td width="33%">{DATE d.m.Y}</td>
+                <td width="33%" align="center">{PAGENO}/{nbpg}</td>
+                <td width="33%" style="text-align: right; ">PeoplePlus Tech Inc.</td>
+            </tr>
+        </tbody>
+    </table>
+</htmlpagefooter>
+<sethtmlpagefooter name="footer" value="on"/>
+<h1 class="full-name text-medium"><?php echo strtoupper($this->application->user->info->getFullName()); ?></h1>
+<table class="personal-information" width="100%">
+    <tbody>
+        <tr>
+            <td>
+                <table class="address">
+                    <tr>
+                        <td><h3 class="header-primary text-medium"><em>PeoplePlustech Consultant</em></h3></td>
+                    </tr>
+                    <tr>
+                        <td><p>PeoplePlustech Inc.</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>contact@peopleplustech.com</p></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    <tbody>
+</table>
+
+<h4 class="heading"><?php echo strtoupper($this->translate('Birth Date')) ?></h4>
+<p><?php echo $this->dateFormat(new DateTime($this->application->user->info->dob), null, null, null, 'MM, dd, Y') ?> </p>
+<h4 class="heading"><?php echo strtoupper($this->translate('Proposed Role')) ?></h4>
+<p><?php echo $this->application->user->cv->positionApplied->title ?></p>
+<h4 class="heading"><?php echo strtoupper($this->translate('Work Experience')) ?></h4>
+<?php if (count($this->application->user->cv->employments) > 0): ?>
+    <table> 
+        <?php foreach ($this->application->user->cv->employments as $employment): ?>
+            <tr>
+                <td><h3><?php echo $employment->organizationName ?></h3></td>
+            </tr>
+            <tr>
+                <td><?php echo $employment->description ?></td>
+            </tr>
+            <tr>
+                <td><?php echo $this->dateFormat(new DateTime($employment->startDate), null, null, null, 'MM, Y') ?> - <?php echo $this->dateFormat(new DateTime($employment->endDate), null, null, null, 'MM, Y') ?></td>
+            </tr>
+            <tr>
+                <td> - <?php echo $employment->position ?></td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+<?php else: ?>
+    <p>Fresh Graduate</p>
+<?php endif; ?> 
+<h4 class="heading"><?php echo strtoupper($this->translate('Education')) ?></h4>
+<?php if (count($this->application->user->cv->educations) > 0): ?>
+    <table> 
+        <?php foreach ($this->application->user->cv->educations as $educations): ?>
+            <tr>
+                <td><?php echo $educations->course ?></td>
+            </tr>
+            <tr>
+                <td><?php echo $educations->organizationName ?></td>
+            </tr>
+            <tr>
+                <td><?php echo $this->dateFormat(new DateTime($educations->startDate), null, null, null, 'Y') ?> - <?php echo $this->dateFormat(new DateTime($educations->endDate), null, null, null, 'Y') ?></td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+<?php endif; ?> 
+<h4 class="heading"><?php echo strtoupper($this->translate('Technical Skills')) ?></h4>
+<?php if (count($this->application->user->cv->educations) > 0): ?>
+    <table> 
+        <?php foreach ($this->application->user->cv->computingSkills as $skill): ?>
+            <tr>
+                <td><?php echo $skill->skillName ?></td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+<?php endif; ?> 

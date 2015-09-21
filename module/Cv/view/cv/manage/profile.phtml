@@ -1,0 +1,67 @@
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading"><?php echo $this->translate('Personal Information') ?></div>
+            <div class="panel-body">
+                <div class="col-xs-6">
+                    <div class="row">
+                        <p>
+
+                            <?php if ($this->cv->freshGraduateIndicator): ?>
+                            <h4 class="text-warning"><?php echo $this->translate('Freash Graduate'); ?></h4>
+                            <?php else: ?>
+                                <?php if (count($this->cv->employments) > 0): ?>
+                                    <?php echo $this->translate('Work Experience') . ': <span class="badge">' . $this->period($this->cv->employments) . ' ' . $this->translate('years') . '</span>' ?>
+                                <?php endif; ?>  
+                            <?php endif; ?>
+                            <?php if (count($this->cv->educations) > 0): ?>
+                                <?php echo $this->translate('Education') . ': <span class="badge">' . $this->period($this->cv->educations) . ' ' . $this->translate('years') . '</span>' ?>
+                            <?php endif; ?>
+                        </p>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <div class="ppt-portrait text-center quiet">
+                                <?php if ($this->cv->user->info->image):  ?>
+                                <img src="<?php echo $this->basePath($this->cv->user->info->image->uri)  ?>" class="img-thumbnail"/>
+                                <?php else:  ?>
+                                <span class="ppt-icon ppt-icon-portrait fa-fg img-thumbnail text-center quiet"></span>
+                                <?php endif  ?>
+                            </div>    
+                        </div>
+                        <adress>
+                            <strong><?php echo $this->cv->user->info->displayName ?></strong><br> 
+                            <?php echo $this->cv->user->info->street ?> <?php echo $this->cv->user->info->houseNumber ?><br>
+                            <?php echo $this->cv->user->info->postalcode ?> <?php echo $this->cv->user->info->city ?><br>
+                            <br>
+                            <?php if ($this->cv->user->info->phone): ?>
+                                <i class="ppt-icon ppt-icon-phone"></i> <?php echo $this->cv->user->info->phone; ?><br>
+                            <?php endif ?>
+                            <?php if ($this->cv->user->info->email): ?>
+                                <i class="ppt-icon ppt-icon-envelope"></i> <?php echo $this->link($this->cv->user->info->email); ?><br>
+                            <?php endif ?>
+                        </adress>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="jumbotron" style="margin-bottom: 0">
+                        <?php if ($application = $this->cv->getApplication()) : ?>
+                        <div class="row">
+                            <div class="col-xs-6"><?php echo $this->translate('Position Applied') ?></div>
+                            <div class="col-xs-6"><?php echo $this->cv->positionApplied->title ?></div>
+                        </div>
+                        <br />
+                            <div class="ats-application-status <?php echo $application->status ?>"><?php echo $this->translate($this->translate('Application Status') .' : '. $application->status) ?></div>
+                        <?php else : ?>
+                            <?php if ($this->cv->user): ?>
+                                    <?php if ($this->cv->user->id == $this->auth('id')): ?>            
+                                        <a href="<?php echo $this->url('lang/cvs/edit', array('id' => $this->cv->id), true) ?>" class="btn btn-large btn-primary btn-block" title="<?php echo $this->translate('Create my CV and Apply') ?>"><span class="fa fa-check"></span> <?php echo $this->translate('Create my CV and Apply') ?></a>
+                                    <?php endif ?>                    
+                            <?php endif ?>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

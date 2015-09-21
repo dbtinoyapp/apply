@@ -1,0 +1,21 @@
+<?php
+/* variables needed for the pagination */
+$prevId = $this->list->getPrevious();
+$nextId = $this->list->getNext();
+$prevHref = $prevId ? $this->url('lang/cvs/detail-full', array('id' => $prevId), true) : '#';
+$nextHref = $nextId ? $this->url('lang/cvs/detail-full', array('id' => $nextId), true) : '#';
+?>
+<nav class="navbar ats-toolbar">  
+    <div class="col-xs-12 row">
+        <div class="btn-group pull-right">
+            <a href="<?php echo $prevHref ?>" class="btn btn-mini btn-default<?php if (!$prevId): echo " disabled";
+endif; ?>" title="<?php echo $this->translate('previous') ?>"><span class="ppt-icon fa-chevron-left"></span></a>
+            <a href="<?php echo $this->url('lang/cvs', array(), true) ?>" class="btn btn-mini btn-default" title="<?php echo $this->translate('Back to list') ?>"><span class=""></span> <?php echo $this->translate('List') ?></a>
+            <a href="<?php echo $nextHref ?>" class="btn btn-mini btn-default<?php if (!$nextId): echo " disabled";
+endif; ?>"" title="<?php echo $this->translate('next') ?>"><span class="ppt-icon fa-chevron-right"></span></a>
+        </div>   
+    </div>
+</nav>
+
+<?php echo $this->partial('cv/manage/profile', array('cv' => $this->cv)); ?>
+<?php echo $this->partial('cv/manage/detail', array('cv' => $this->cv)); ?>

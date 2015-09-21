@@ -1,0 +1,16 @@
+<?php
+
+if ($this->isSaved) {
+    echo 'ok';
+    return;
+} 
+$this->commentForm->setAttribute(
+    'action', 
+    $this->url('lang/applications/comments', array(), true) 
+    . '?mode=' . $this->mode . '&id=' . $this->identifier 
+);
+
+echo $this->form($this->commentForm, Core\Form\View\Helper\Form::LAYOUT_HORIZONTAL);
+?>
+
+

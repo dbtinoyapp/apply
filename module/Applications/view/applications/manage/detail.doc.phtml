@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <title></title>
+        <style type="text/css">
+            <!--
+            @page { margin: 2.54cm }
+            p { margin-bottom: 0.25cm; direction: ltr; color: #000000; line-height: 120%; widows: 2; orphans: 2 }
+            p.western { font-family: "Tahoma", sans-serif; font-size: 9pt; so-language: en-US }
+            p.cjk { font-family: "Tahoma", sans-serif; font-size: 11pt }
+            p.ctl { font-family: "Tahoma", serif; font-size: 11pt; so-language: ar-SA }
+            a:link { color: #0000ff }
+            .table-header { vertical-align:middle; background-color:#ffffff; padding-left:0.049cm; padding-right:0.049cm; padding-top:0.199cm; padding-bottom:0cm; border-width:0.1058cm; border-style:double; border-color:#000080; }
+            -->
+        </style>
+    </head>
+    <body lang="en-PH" text="#000000" link="#0000ff" dir="ltr">
+        <p lang="en-US" class="western" style="margin-bottom: 0cm; line-height: 100%">
+            <br>
+        </p>
+        <table width="364" cellpadding="6" cellspacing="0">
+            <col width="352">
+            <tr>
+                <td width="352" valign="top" style="border: none; padding: 0cm">
+                    <p lang="en-US" class="western"><font face="Arial, sans-serif"><font size="5" style="font-size: 18pt"><b><?php echo strtoupper($this->application->user->info->getFullName()); ?></b></font></font></p>
+                </td>
+            </tr>
+        </table>
+
+        <p lang="en-US" class="western" style="margin-bottom: 0cm; line-height: 100%">
+            <font color="#000000"><font face="Times New Roman, serif"><font size="4" style="font-size: 13pt"><i><b><?php echo $this->translate('PeoplePlusTech') ?>
+                            </b></i></font></font></font><font color="#000000"><font face="Times New Roman, serif"><font size="4" style="font-size: 13pt"><i><?php echo $this->translate('Consultant') ?></i></font></font></font></p>
+        <p lang="en-US" class="western" style="margin-bottom: 0cm; line-height: 100%">
+            <font face="Times New Roman, serif"><font size="3" style="font-size: 12pt"><?php echo $this->translate('PeoplePlusTech
+Inc.') ?></font></font></p>
+        <p lang="en-US" class="western" style="margin-bottom: 0cm; line-height: 100%">
+            <a href="mailto:contact@peopleplustech.com"><font color="#0000ff"><font face="Times New Roman, serif"><font size="3" style="font-size: 12pt"><u>contact@peopleplustech.com</u></font></font></font></a></p>
+        <p lang="en-US" class="western" style="margin-bottom: 0cm; line-height: 100%">
+            <br>
+        </p>
+        <table width="559" >
+            <col width="553">
+            <tr>
+                <td width="553" valign="middle" class="table-header">
+                    <font size="2" style="font-size: 9pt"><b><?php echo $this->translate('BIRTH DATE') ?></b></font></font>
+                </td>
+            </tr>
+        </table>
+        <p lang="en-US" class="western" style="margin-bottom: 0cm; line-height: 100%">
+            <br>
+        </p>
+        <p lang="en-US" class="western" style="margin-bottom: 0cm; line-height: 100%">
+            <font face="Tahoma, sans-serif"><font size="2" style="font-size: 9pt"><?php echo $this->dateFormat(new DateTime($this->application->user->info->dob), null, null, null, 'MM, dd, Y') ?></font></font></p>
+        <p lang="en-US" class="western" style="margin-bottom: 0cm; line-height: 100%">
+            <br>
+        </p>
+        <table width="559" >
+            <col width="553">
+            <tr>
+                <td width="553" valign="middle" class="table-header">
+                    <font face="Tahoma, sans-serif"><font size="2" style="font-size: 9pt"><b><?php echo $this->translate('PROPOSED ROLE') ?></b></font></font>
+                </td>
+            </tr>
+        </table>
+        <p lang="en-US" class="western" style="margin-bottom: 0cm; line-height: 100%">
+            <br>
+        </p>
+        <p lang="en-US" class="western" style="margin-bottom: 0cm; line-height: 0.38cm">
+            <font face="Tahoma, sans-serif"><font size="2" style="font-size: 9pt"><?php echo $this->application->user->cv->positionApplied->title ?></font></font></p>
+        <p lang="en-US" class="western" style="margin-bottom: 0cm; line-height: 100%">
+            <br>
+        </p>
+        <table width="559" >
+            <col width="553">
+            <tr>
+                <td width="553" valign="middle" class="table-header">
+                    <font face="Tahoma, sans-serif"><font size="2" style="font-size: 9pt"><b><?php echo $this->translate('WORK EXPERIENCE') ?> </b></font></font>
+                </td>
+            </tr>
+        </table>
+        <p lang="en-US" class="western" style="margin-bottom: 0cm; line-height: 100%">
+            <br>
+        </p>
+        <?php if (count($this->application->user->cv->employments) > 0): ?>
+            <?php foreach ($this->application->user->cv->employments as $employment): ?>
+
+                <p lang="en-US" class="western" style="margin-bottom: 0cm; line-height: 100%">
+                    <font face="Tahoma, sans-serif"><font size="2" style="font-size: 9pt"><?php echo $this->dateFormat(new DateTime($employment->startDate), null, null, null, 'MM, Y') ?> - <?php echo $this->dateFormat(new DateTime($employment->endDate), null, null, null, 'MM, Y') ?></font></font></p>
+                <p lang="en-US" class="western" style="margin-bottom: 0cm; line-height: 100%">
+                    <font face="Tahoma, sans-serif"><font size="2" style="font-size: 9pt"><?php echo $employment->position ?> - <?php echo $employment->organizationName ?></font></font></p>
+            <?php endforeach; ?>
+        <?php else: ?>
+
+            <p lang="en-US" class="western" style="margin-bottom: 0cm; line-height: 100%">
+                <font face="Tahoma, sans-serif"><font size="2" style="font-size: 9pt"><?php echo $this->translate('Fresh Graduate') ?></font></font></p>
+        <?php endif; ?> 
+
+        <p lang="en-US" class="western" style="margin-bottom: 0cm; line-height: 100%">
+            <br>
+        </p>
+        <table width="559" >
+            <col width="553">
+            <tr>
+                <td width="553" valign="middle" class="table-header">
+                    <font face="Tahoma, sans-serif"><font size="2" style="font-size: 9pt"><b><?php echo $this->translate('EDUCATION') ?></b></font></font>
+                </td>
+            </tr>
+        </table>
+        <p lang="en-US" class="western" style="margin-bottom: 0cm; line-height: 100%">
+            <br>
+        </p>
+        <?php if (count($this->application->user->cv->educations) > 0): ?>
+            <?php foreach ($this->application->user->cv->educations as $educations): ?>
+
+                <p lang="en-US" class="western" style="margin-bottom: 0cm; line-height: 100%">
+                    <font face="Tahoma, sans-serif"><font size="2" style="font-size: 9pt"><b><?php echo $educations->organizationName ?></b></font></font></p>
+                <p lang="en-US" class="western" style="margin-bottom: 0cm; line-height: 100%">
+                    <font face="Tahoma, sans-serif"><font size="2" style="font-size: 9pt"><b><?php echo $educations->course ?></b></font></font></p>
+                <p lang="en-US" class="western" style="margin-bottom: 0cm; line-height: 100%">
+                    <font face="Tahoma, sans-serif"><font size="2" style="font-size: 9pt"><?php echo $this->dateFormat(new DateTime($educations->startDate), null, null, null, 'Y') ?> - <?php echo $this->dateFormat(new DateTime($educations->endDate), null, null, null, 'Y') ?></font></font>                                                                 
+                </p>
+            <?php endforeach; ?>
+        <?php endif; ?> 
+
+        <p lang="pt-PT" class="western" style="margin-bottom: 0cm; line-height: 100%">
+            <br>
+        </p>
+        <table width="559" >
+            <col width="553">
+            <tr>
+                <td width="553" valign="middle" class="table-header">
+                    <font face="Tahoma, sans-serif"><font size="2" style="font-size: 9pt"><b><?php echo $this->translate('TECHNICAL SKILLS') ?> </b></font></font>
+                </td>
+            </tr>
+        </table>
+        <p lang="en-US" class="western" style="margin-bottom: 0cm; line-height: 100%">
+            <br>
+        </p>
+        <?php if (count($this->application->user->cv->educations) > 0): ?>
+            <ul>
+                <?php foreach ($this->application->user->cv->computingSkills as $skill): ?>
+                    <li><p lang="en-US" style="margin-bottom: 0cm; line-height: 100%"><font face="Tahoma, sans-serif"><font size="2" style="font-size: 9pt"><?php echo $skill->skillName ?></font></font></p></li>
+                                <?php endforeach; ?>
+            </ul>
+        <?php endif; ?> 
+    </body>
+</html>

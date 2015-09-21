@@ -1,0 +1,19 @@
+<?php if ($this->cv): ?>
+    <h1>Your Resume</h1>
+    <?php echo $this->partial('cv/manage/profile', array('cv' => $this->cv)); ?>
+    <?php echo $this->partial('cv/manage/detail') ?>
+<?php else: ?>
+    <div class="row">
+        <div class='v-center '>
+            <div class="col-xs-6 col-xs-push-3">
+                <div class="jumbotron">
+                    <p>It seems that you haven't created or completed your resume yet.</p>
+                    <span>Creating your resume will just take a few minutes.</span>
+                    <div class='clearfix'></div>
+                    <br /><br />
+                    <a class="btn btn-large btn-primary btn-block" href="<?php echo $this->url('lang/cvs/new', array(), true) ?>">Create my CV</a>
+                </div>    
+            </div>
+        </div>
+    </div>
+<?php endif ?>

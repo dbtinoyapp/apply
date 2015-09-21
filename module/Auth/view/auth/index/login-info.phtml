@@ -1,0 +1,56 @@
+<ul class="nav navbar-nav navbar-right">
+    <li class="dropdown">
+    
+<?php if ($this->auth()->isLoggedIn()): ?>
+
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+         
+          <strong><?php echo $this->auth('info')->displayName?></strong><!--<small class="mute"> (<?php echo $this->translate($this->Acl()->getUser()->role)?>) </small>-->
+           <b class="caret"></b>
+      </a>
+      
+        <ul class="dropdown-menu pull-right">
+            <li>
+                <a href="<?php echo $this->url('lang/my', array('action' => 'profile'), true)?>"><span class="ppt-icon ppt-icon-user"></span> <?php echo $this->translate('My profile')?></a>
+            </li>
+            <li>
+                <a href="<?php echo $this->url('lang/my', array('action' => 'password'), true)?>"><span class="ppt-icon ppt-icon-password"></span> <?php echo $this->translate('Change password')?></a>
+            </li>
+            <?php if ($this->auth('role') == 'recruiter'): ?>
+            <li>
+                <a href="<?php echo $this->url('lang/my-groups', array('lang' => $this->params('lang')))?>"><span class="ppt-icon ppt-icon-group"></span> <?php echo $this->translate('Manage groups') ?></a>
+            </li>
+            <?php endif ?>
+            <li class="divider"/>
+            <li>
+                <a href="<?php echo $this->url('auth-logout')?>"><span class="ppt-icon ppt-icon-logout"></span><?php echo $this->translate('Logout')?></a>
+            </li>
+        </ul>
+
+
+<?php else: ?>
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><?php echo sprintf(
+        $this->translate('Hello %s'),
+        '<strong>' . $this->translate('Guest') . '</strong>'
+    )?><b class="caret"></b></a>
+
+   <ul class="dropdown-menu pull-right">
+        <li><a href="<?php 
+            $ref = $this->buildReferer(array('logout', 'ref'));
+        echo $this->url('lang/auth', array(), array(
+                                                'query' => array(
+                                                    'ref' => urlencode($ref),
+                                                 )), true)?>"
+             ><span class="ppt-icon ppt-icon-login"></span> <?php echo $this->translate('Login')?></a></li>
+        <li class="divider"></li>
+        <li class="disabled dropdown-header"><a><?php echo $this->translate('Login via')?>...</a></li>
+    <?php foreach (array('facebook' => 'Facebook', 'linkedin' => 'LinkedIn') as $provider => $name): ?>
+        <li>
+            <a class="login-link" title="<?php echo sprintf($this->translate('Login with %s'), $name)?>" href="<?php echo $this->url('auth-provider', array('provider' => $provider), array('query' => array('ref' => urlencode($ref))))?>"><i class="ppt-icon ppt-icon-<?php echo $provider?>"></i> <?php echo $name?></a>
+        </li>
+    <?php endforeach ?>
+    </ul>
+
+<?php endif ?>
+    </li>
+</ul>
